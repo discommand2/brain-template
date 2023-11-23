@@ -38,7 +38,7 @@ try {
 }
 
 try {
-    $brain = new Brain($log) or throw new \Exception("Unable to create $brainName!");
+    $brain = new Brain($log, $brainName) or throw new \Exception("Unable to create $brainName!");
     $brain->think() or throw new \Exception("$brainName failed to think!");
 } catch (\Exception $e) {
     $log->debug($e->getTraceAsString());
