@@ -1,0 +1,55 @@
+#!/usr/bin/env php
+<?php
+
+namespace Discommand2;
+
+use Discommand2\Core\Brain;
+use Discommand2\Core\LogFactory;
+
+function requireFile(string $path)
+{
+    if (!file_exists($path)) throw new \Exception("Required $path not found!");
+    require_once($path);
+}
+
+function autoLoad()
+{
+    if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
+        requireFile(__DIR__ . '/src/Composer.php');
+        Composer::command('install') or throw new \Exception("Composer install failed!");
+    }
+    requireFile(__DIR__ . '/vendor/autoload.php');
+    return class_exists('\Discommand2\Discommand2');
+}
+
+try {
+    $brainName = basename(__DIR__);
+    autoLoad() or throw new \Exception("$brainName failed to autoload!");
+    $log = LogFactory::create($brainName) or throw new \Exception("Logger failed to create!");
+} catch (\Exception $e) {
+    echo ("[FATAL] " . $e->getMessage() . "\n");
+    exit(1);
+} catch (\Throwable $e) {
+    echo ("[FATAL] " . $e->getMessage() . "\n");
+    exit(1);
+} catch (\Error $e) {
+    echo ("[FATAL] " . $e->getMessage() . "\n");
+    exit(1);
+}
+
+try {
+    $brain = new Brain($log) or throw new \Exception("Unable to create $brainName!");
+    $brain->think() or throw new \Exception("$brainName failed to think!");
+} catch (\Exception $e) {
+    $log->debug($e->getTraceAsString());
+    $log->error($e->getMessage());
+    exit(1);
+} catch (\Throwable $e) {
+    $log->debug($e->getTraceAsString());
+    $log->error($e->getMessage());
+    exit(1);
+} catch (\Error $e) {
+    $log->debug($e->getTraceAsString());
+    $log->error($e->getMessage());
+    exit(1);
+}
