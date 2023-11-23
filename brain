@@ -19,7 +19,7 @@ function autoLoad()
         Composer::command('install') or throw new \Exception("Composer install failed!");
     }
     requireFile(__DIR__ . '/vendor/autoload.php');
-    return class_exists('\Discommand2\Discommand2');
+    return class_exists('\Discommand2\Core\Brain');
 }
 
 try {
