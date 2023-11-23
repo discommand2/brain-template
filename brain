@@ -6,6 +6,8 @@ namespace Discommand2;
 use Discommand2\Core\Brain;
 use Discommand2\Core\LogFactory;
 
+$brainName = basename(__DIR__);
+
 function requireFile(string $path)
 {
     if (!file_exists($path)) throw new \Exception("Required $path not found!");
@@ -23,7 +25,6 @@ function autoLoad()
 }
 
 try {
-    $brainName = basename(__DIR__);
     autoLoad() or throw new \Exception("$brainName failed to autoload!");
     $log = LogFactory::create($brainName) or throw new \Exception("Logger failed to create!");
 } catch (\Exception $e) {
@@ -38,18 +39,18 @@ try {
 }
 
 try {
-    $brain = new Brain($log, $brainName) or throw new \Exception("Unable to create $brainName!");
+    $brain = new Brain($log, $brainName) or throw new \Exception("Unable to wake $brainName!");
     $brain->think() or throw new \Exception("$brainName failed to think!");
 } catch (\Exception $e) {
     $log->debug($e->getTraceAsString());
     $log->error($e->getMessage());
-    exit(1);
 } catch (\Throwable $e) {
     $log->debug($e->getTraceAsString());
     $log->error($e->getMessage());
-    exit(1);
 } catch (\Error $e) {
     $log->debug($e->getTraceAsString());
     $log->error($e->getMessage());
-    exit(1);
 }
+
+$log->error("$brainName isn't thinking!");
+exit(1);
