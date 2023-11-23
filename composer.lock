@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/discommand2/core.git",
-                "reference": "eed1a86d8f766abab50792f4e859123077e0037d"
+                "reference": "ca96577b74806edccd63d73effcd576167298e21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/discommand2/core/zipball/eed1a86d8f766abab50792f4e859123077e0037d",
-                "reference": "eed1a86d8f766abab50792f4e859123077e0037d",
+                "url": "https://api.github.com/repos/discommand2/core/zipball/ca96577b74806edccd63d73effcd576167298e21",
+                "reference": "ca96577b74806edccd63d73effcd576167298e21",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 "issues": "https://github.com/discommand2/core/issues",
                 "source": "https://github.com/discommand2/core/tree/feature/initial-brain-class"
             },
-            "time": "2023-11-23T21:24:16+00:00"
+            "time": "2023-11-23T21:26:36+00:00"
         },
         {
             "name": "monolog/monolog",
