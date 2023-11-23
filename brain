@@ -52,5 +52,5 @@ try {
     $log->error($e->getMessage());
 }
 
-$log->error("$brainName isn't thinking!");
+$log->error("$brainName stopped thinking!");
 exit(1);
