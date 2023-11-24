@@ -16,6 +16,11 @@
     "php": ">=8.2",
     "discommand2/core": "dev-main"
   },
+  "autoload": {
+    "psr-4": {
+      "Discommand2\\Brain\\Template\\": "src/"
+    }
+  },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "version": "2.0.0"

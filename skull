@@ -3,7 +3,6 @@
 
 namespace Discommand2;
 
-use Discommand2\Core\Brain;
 use Discommand2\Core\LogFactory;
 
 $brainName = basename(__DIR__);
@@ -39,18 +38,18 @@ try {
 }
 
 try {
-    $brain = new Brain($log, $brainName) or throw new \Exception("Unable to wake $brainName!");
-    $brain->think() or throw new \Exception("$brainName failed to think!");
+    $skull = new Skull($log, $brainName) or throw new \Exception("Unable to create $brainName's skull!");
+    $skull->run($argv) or throw new \Exception("$brainName's skull failed to run!");
 } catch (\Exception $e) {
     $log->debug($e->getMessage(), ["trace" => $e->getTrace()]);
     $log->error($e->getMessage());
+    exit(1);
 } catch (\Throwable $e) {
     $log->debug($e->getMessage(), ["trace" => $e->getTrace()]);
     $log->error($e->getMessage());
+    exit(1);
 } catch (\Error $e) {
     $log->debug($e->getMessage(), ["trace" => $e->getTrace()]);
     $log->error($e->getMessage());
+    exit(1);
 }
-
-$log->error("$brainName stopped thinking!");
-exit(1);
