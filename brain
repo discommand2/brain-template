@@ -42,13 +42,13 @@ try {
     $brain = new Brain($log, $brainName) or throw new \Exception("Unable to wake $brainName!");
     $brain->think() or throw new \Exception("$brainName failed to think!");
 } catch (\Exception $e) {
-    $log->debug($e->getTraceAsString());
+    $log->debug($e->getMessage(), ["trace" => $e->getTrace()]);
     $log->error($e->getMessage());
 } catch (\Throwable $e) {
-    $log->debug($e->getTraceAsString());
+    $log->debug($e->getMessage(), ["trace" => $e->getTrace()]);
     $log->error($e->getMessage());
 } catch (\Error $e) {
-    $log->debug($e->getTraceAsString());
+    $log->debug($e->getMessage(), ["trace" => $e->getTrace()]);
     $log->error($e->getMessage());
 }
 
