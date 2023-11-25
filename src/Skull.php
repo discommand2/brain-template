@@ -12,7 +12,7 @@ class Skull
     private ?Brain $brain = null;
     public function __construct(private Logger $log, private string $myName)
     {
-        $this->log->debug("skull initialized!");
+        $this->log->debug("$myName's skull initialized!");
     }
 
     public function run(array $argv): bool
@@ -33,12 +33,12 @@ class Skull
                 return $this->config($argv);
             default:
                 echo "Usage:\n";
-                echo "skull start";
-                echo "skull update [pluginName]\n";
-                echo "skull upgrade [pluginName] [force]\n";
-                echo "skull install [pluginName]\n";
-                echo "skull remove [pluginName]\n";
-                echo "skull config [pluginName] [setting] [key/value] [key/value]\n";
+                echo "brain start";
+                echo "brain update [pluginName]\n";
+                echo "brain upgrade [pluginName] [force]\n";
+                echo "brain install [pluginName]\n";
+                echo "brain remove [pluginName]\n";
+                echo "brain config [pluginName] [setting] [key/value] [key/value]\n";
         }
         return true;
     }
