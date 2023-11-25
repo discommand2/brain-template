@@ -16,8 +16,8 @@ function requireFile(string $path)
 function autoLoad()
 {
     if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
-        requireFile(__DIR__ . '/src/Composer.php');
-        Composer::command('install') or throw new \Exception("Composer install failed!");
+        requireFile(__DIR__ . '/Composer.php');
+        composer::command('install') or throw new \Exception("Composer install failed!");
     }
     requireFile(__DIR__ . '/vendor/autoload.php');
     return class_exists('\Discommand2\Core\Brain');

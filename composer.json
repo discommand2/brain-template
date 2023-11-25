@@ -1,7 +1,7 @@
 {
   "name": "discommand2/brain-template",
   "description": "The base template for brains, from which all specific brain templates will inherit.",
-  "type": "library",
+  "type": "project",
   "license": "MIT",
   "authors": [
     {
@@ -15,11 +15,6 @@
   "require": {
     "php": ">=8.2",
     "discommand2/core": "dev-main"
-  },
-  "autoload": {
-    "psr-4": {
-      "Discommand2\\Brain\\Template\\": "src/"
-    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
